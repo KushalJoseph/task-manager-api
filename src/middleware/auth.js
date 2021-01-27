@@ -3,7 +3,7 @@ const User=require('../models/user');
 const auth=async(request,response,next)=>{
     try{
         const token=request.header("Authorization").replace("Bearer ","");
-        const decoded=jwt.verify(token,"thisismysecret");
+        const decoded=jwt.verify(token,process.env.JWT_SECRETconf);
         const user=await User.findOne({_id:decoded._id,"tokens.token":token});
 
         if(!user){

@@ -7,6 +7,7 @@ const multer=require('multer');
 const auth=require('./src/middleware/auth');
 const User=require('./src/models/user');
 const Tasks=require('./src/models/task');
+const port=process.env.PORT||3000;
 
 const userRouter=require('./src/routers/userRouter');
 const taskRouter=require('./src/routers/taskRouter');
@@ -17,7 +18,7 @@ app.use(userRouter);
 app.use(taskRouter);
 
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("Server up and running");
 });
 
